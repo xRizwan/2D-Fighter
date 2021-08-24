@@ -44,6 +44,7 @@ public class CharacterHandler : MonoBehaviour
     }
 
     // all functions have been made virtual so animations can be added differently for each different character
+    // by overriding them.
 
     // Moves the character forward or backward
     public virtual void Move(float horizontal) {
