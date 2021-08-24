@@ -79,7 +79,6 @@ public class CharacterHandler : MonoBehaviour
 
             foreach(Collider2D enemy in hitEnemies)
             {
-                Debug.Log("Enemy Hit and took damage: " + damageValue);
                 enemy.GetComponent<Player>().TakeDamage(damageValue);
             }
         }
@@ -105,7 +104,6 @@ public class CharacterHandler : MonoBehaviour
 
     public virtual void IsDead()
     {
-        Debug.Log("Player Dead");
         animator.SetTrigger("Is_Dead");
         is_dead = true;
         GetComponent<CapsuleCollider2D>().enabled = false;
