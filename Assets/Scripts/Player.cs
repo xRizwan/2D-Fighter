@@ -15,6 +15,8 @@ public class Player : CharacterHandler
     // Animation names
     const string ATTACK1 = "Player_Attack_1";
     const string ATTACK2 = "Player_Attack_2";
+    const string TRANSITION1 = "Player_Attack_Transition_0";
+    const string TRANSITION2 = "Player_Attack_Transition_1";
 
     void Awake()
     {
@@ -42,12 +44,14 @@ public class Player : CharacterHandler
         
         // If attack animations are playing, don't move.
         AnimatorStateInfo animState = animator.GetCurrentAnimatorStateInfo(0);
-        if (!(animState.IsName(ATTACK1) || animState.IsName(ATTACK2) || is_dazed))
+        if (!(animState.IsName(ATTACK1) || animState.IsName(ATTACK2) || animState.IsName(TRANSITION1) || animState.IsName(TRANSITION2) || is_dazed))
         {
             Move(horizontal);
             Jump();
 
             CheckForGround();
+        } else {
+            Stop();
         }
     }
 

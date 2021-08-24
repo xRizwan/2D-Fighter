@@ -59,6 +59,12 @@ public class CharacterHandler : MonoBehaviour
 
     }
 
+    // Stops player movement
+    public virtual void Stop()
+    {
+        m_rb.velocity = Vector3.zero;
+    }
+
     // Adds an upward force to make the character jump
     public virtual void Jump() {
         m_rb.AddForce(new Vector2(0, m_jump_force), ForceMode2D.Impulse);
