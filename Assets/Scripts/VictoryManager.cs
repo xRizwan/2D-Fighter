@@ -19,7 +19,6 @@ public class VictoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(player1.value + " here");
         if (player1.value <= 0) {
             winnerText.text = "Player 2 is the winner";
             SetActive();
