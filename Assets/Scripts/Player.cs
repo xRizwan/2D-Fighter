@@ -28,11 +28,9 @@ public class Player : CharacterHandler
         if (health <= 0) return;
 
         if (Input.GetKeyDown(attackKey))
-        {
             should_attack = true;
-        } else {
+        else
             should_attack = false;
-        }
 
         horizontal = Input.GetAxis("Horizontal" + playerNumber);
         vertical = Input.GetAxis("Vertical" + playerNumber);
@@ -65,8 +63,8 @@ public class Player : CharacterHandler
     {
         if (is_grounded && vertical > 0 && !is_dazed)
         {
-            base.Jump();
             animator.SetBool(JUMPING, true);
+            base.Jump();
         }
     }
 
