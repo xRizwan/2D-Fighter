@@ -22,14 +22,14 @@ public class FollowPlayer : MonoBehaviour
         float targetX = player.position.x - target.x;
         target.x += targetX + offset;
 
-        // limiting target x position;
+        // limiting target x position
         if (target.x <= leftOffsetLimit) target.x = leftOffsetLimit;
 
         // applying new position
         Vector3 newPos = Vector3.SmoothDamp(transform.position, target, ref current, smoothTime);
         transform.position = newPos;
 
-        // make the x position of background same as camera however keep it's z position the same.
+        // make the x position of background same as camera however keep it's z position the same
         background.position = new Vector3(newPos.x, newPos.y, background.position.z);
     }
 }
