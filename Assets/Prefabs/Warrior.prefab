@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3273247103798177035}
   - component: {fileID: 3273247103798177034}
+  - component: {fileID: 2219535176304680538}
   - component: {fileID: 3273247103798177032}
   - component: {fileID: 3273247103798177033}
   - component: {fileID: 3273247103798177031}
@@ -88,6 +89,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2219535176304680538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273247103798177037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cbc9d51c43fb04bb65dc55cfb9849f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  health: 100
 --- !u!114 &3273247103798177032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +126,6 @@ MonoBehaviour:
     m_Bits: 64
   ground_check: {fileID: 3273247105398556978}
   animator: {fileID: 3273247103798177031}
-  attackKey: 108
   should_attack: 0
   is_dead: 0
   attackRange: 1
@@ -119,9 +133,9 @@ MonoBehaviour:
   m_jump_force: 40
   damageValue: 10
   dazeDuration: 0.7
-  healthBar: {fileID: 0}
   can_attack: 0
   playerNumber: 1
+  attackKey: 108
 --- !u!50 &3273247103798177033
 Rigidbody2D:
   serializedVersion: 4

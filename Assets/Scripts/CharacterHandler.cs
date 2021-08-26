@@ -15,17 +15,15 @@ public class CharacterHandler : MonoBehaviour
     public Transform ground_check;
     public Animator animator;
     
+    protected HealthManager healthManager;
+    
     public bool should_attack;
-    public bool is_dead;
     public float attackRange = 0.5f;
 
     [SerializeField] protected bool m_facing_right = true;
     protected bool is_grounded = true;
     [SerializeField] protected float m_jump_force = 8;
-    public int health { get; protected set; } = 100;
     [SerializeField] protected int damageValue = 10;
-    protected bool is_dazed = false;
-    [SerializeField] protected float dazeDuration = 0.5f;
     public bool can_attack = false;
 
     public virtual void StartGame()
@@ -75,51 +73,17 @@ public class CharacterHandler : MonoBehaviour
     // Attacks nearby enemy by creating a circle to check if they're within it's bounds
     protected virtual void DealDamage()
     {
-        if (!is_dazed && can_attack)
+        if (!healthManager.is_dazed && can_attack)
         {
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
             foreach(Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<Player>().TakeDamage(damageValue);
+                enemy.GetComponent<HealthManager>().TakeDamage(damageValue);
             }
         }
 
         can_attack = false;
-    }
-
-    // Makes the character take damage
-    public virtual void TakeDamage(int damageToTake)
-    {
-        if (is_dead) return;
-        
-        is_dazed = true;
-        Hurt();
-        Invoke("Undaze", dazeDuration);
-        health -= damageToTake;
-
-        if (health <= 0) {
-            IsDead();
-            return;
-        }
-    }
-
-    public virtual void IsDead()
-    {
-        animator.SetTrigger("Is_Dead");
-        is_dead = true;
-        GetComponent<CapsuleCollider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().Sleep();
-    }
-
-    public virtual void Hurt()
-    {
-        animator.Play("Player_Hurt");
-    }
-    
-    private void Undaze()
-    {
-        is_dazed = false;
     }
 
     // Flips the character left/right

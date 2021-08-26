@@ -13,8 +13,9 @@ public class Transition_Behaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        HealthManager h_instance = animator.gameObject.GetComponentInParent<HealthManager>();
         Player p_instance = animator.gameObject.GetComponentInParent<Player>();
-        if (p_instance.should_attack && !p_instance.is_dead)
+        if (p_instance.should_attack && !h_instance.is_dead)
         {
             animator.SetTrigger("AttackTwo");
             p_instance.can_attack = true;

@@ -12282,6 +12282,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &622391406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3273247103798177037, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+  m_PrefabInstance: {fileID: 3273247103965409678}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &623841038
 GameObject:
   m_ObjectHideFlags: 0
@@ -31817,6 +31822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1756620165}
   - component: {fileID: 1756620164}
+  - component: {fileID: 1756620166}
   - component: {fileID: 1756620163}
   - component: {fileID: 1756620162}
   - component: {fileID: 1756620161}
@@ -31907,17 +31913,14 @@ MonoBehaviour:
     m_Bits: 64
   ground_check: {fileID: 1309043268}
   animator: {fileID: 1756620161}
-  attackKey: 103
   should_attack: 0
-  is_dead: 0
   attackRange: 1
   m_facing_right: 0
   m_jump_force: 40
   damageValue: 10
-  dazeDuration: 0.7
-  healthBar: {fileID: 1996601585}
   can_attack: 0
   playerNumber: 2
+  attackKey: 103
 --- !u!212 &1756620164
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31985,6 +31988,23 @@ Transform:
   m_Father: {fileID: 551922978}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756620166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756620159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cbc9d51c43fb04bb65dc55cfb9849f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 1996601585}
+  health: 100
+  is_dead: 0
+  is_dazed: 0
+  dazeDuration: 0.5
 --- !u!1 &1769356746
 GameObject:
   m_ObjectHideFlags: 0
@@ -38428,6 +38448,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 551922978}
     m_Modifications:
+    - target: {fileID: 2219535176304680538, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 622391406}
+    - target: {fileID: 2219535176304680538, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 7976517130604929130}
     - target: {fileID: 3273247103798177032, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: healthBar
       value: 

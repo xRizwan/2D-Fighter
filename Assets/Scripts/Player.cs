@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : CharacterHandler
 {
-    public HealthBar healthBar;
     public int playerNumber;
     public KeyCode attackKey;
     private float horizontal;
@@ -22,19 +21,18 @@ public class Player : CharacterHandler
 
     void Awake()
     {
-        health = 100;
+        healthManager = GetComponent<HealthManager>();
     }
 
     void Start()
     {
 
         StartGame();
-        healthBar.SetMaxHealth(health);
     }
 
     void Update()
     {
-        if (health <= 0) return;
+        if (healthManager.health <= 0) return;
 
         if (Input.GetKeyDown(attackKey))
             should_attack = true;
@@ -47,11 +45,11 @@ public class Player : CharacterHandler
 
     void FixedUpdate()
     {
-        if (health <= 0) return;
+        if (healthManager.health <= 0) return;
         
         // If attack animations are playing, don't move.
         AnimatorStateInfo animState = animator.GetCurrentAnimatorStateInfo(0);
-        if (!(animState.IsName(ATTACK1) || animState.IsName(ATTACK2) || animState.IsName(TRANSITION1) || animState.IsName(TRANSITION2) || is_dazed))
+        if (!(animState.IsName(ATTACK1) || animState.IsName(ATTACK2) || animState.IsName(TRANSITION1) || animState.IsName(TRANSITION2) || healthManager.is_dazed))
         {
             Move(horizontal);
             Jump();
@@ -70,7 +68,7 @@ public class Player : CharacterHandler
 
     public override void Jump()
     {
-        if (is_grounded && vertical > 0 && !is_dazed)
+        if (is_grounded && vertical > 0 && !healthManager.is_dazed)
         {
             animator.SetBool(JUMPING, true);
             base.Jump();
@@ -83,12 +81,6 @@ public class Player : CharacterHandler
         
         if (is_grounded)
             animator.SetBool(JUMPING, false);
-    }
-
-    public override void TakeDamage(int damageToTake)
-    {
-        base.TakeDamage(damageToTake);
-        healthBar.SetHealth(health);
     }
 
     // Displays the radius of the attack range(circle), when the character is selected in the editor
