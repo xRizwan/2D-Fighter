@@ -14,7 +14,7 @@ public class HealthManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        healthBar.SetMaxHealth(health);
+        if (healthBar) healthBar.SetMaxHealth(health);
     }
 
     public void TakeDamage(int damageToTake)

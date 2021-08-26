@@ -29,6 +29,7 @@ public class CharacterHandler : MonoBehaviour
     public virtual void StartGame()
     {
         m_rb = GetComponent<Rigidbody2D>();
+        healthManager = GetComponent<HealthManager>();
     }
 
     public virtual void CheckForGround()

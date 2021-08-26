@@ -111,22 +111,22 @@ public class EnemyAI : CharacterHandler
         }
     }
 
-    // protected override void DealDamage()
-    // {
-    //     if (!is_dazed)
-    //     {
-    //         Vector3 line_start_position = attackPoint.position;
-    //         Vector3 line_end_position = attackPoint.position;
-    //         line_start_position.x -= attackRange;
-    //         line_end_position.x += attackRange;
+    protected override void DealDamage()
+    {
+        if (!healthManager.is_dazed)
+        {
+            Vector3 line_start_position = attackPoint.position;
+            Vector3 line_end_position = attackPoint.position;
+            line_start_position.x -= attackRange;
+            line_end_position.x += attackRange;
 
-    //         RaycastHit2D[] hitEnemies = Physics2D.LinecastAll(line_start_position, line_end_position, enemyLayers);
-    //         foreach(RaycastHit2D enemy in hitEnemies)
-    //         {
-    //             // enemy.transform.gameObject.GetComponent<Player>().TakeDamage(damageValue);
-    //         }
-    //     }
-    // }
+            RaycastHit2D[] hitEnemies = Physics2D.LinecastAll(line_start_position, line_end_position, enemyLayers);
+            foreach(RaycastHit2D enemy in hitEnemies)
+            {
+                enemy.transform.gameObject.GetComponent<HealthManager>().TakeDamage(damageValue);
+            }
+        }
+    }
 
     public void OnDrawGizmosSelected()
     {

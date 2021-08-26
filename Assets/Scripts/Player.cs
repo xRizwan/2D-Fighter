@@ -19,11 +19,6 @@ public class Player : CharacterHandler
     const string TRANSITION1 = "Player_Attack_Transition_0";
     const string TRANSITION2 = "Player_Attack_Transition_1";
 
-    void Awake()
-    {
-        healthManager = GetComponent<HealthManager>();
-    }
-
     void Start()
     {
 
