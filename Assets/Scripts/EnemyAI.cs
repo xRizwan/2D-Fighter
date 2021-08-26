@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class EnemyAI : CharacterHandler
 {
+    // the amount of seconds after which the AI can attack
     public float attackInterval = 7.0f;
-    public int moveRange;
+
+    // the farthest the AI can go from it's starting position
+    public float moveRange = 4.0f;
+
+    // makes AI move left or right (-1 or 1);
     private int move = 0;
+
+    // saves the starting position so it can be used as a reference to drive AI movement
     private Vector3 startPos;
-    private Vector3 velocity;
+
+    // state checking
+    private bool is_attacking;
     private bool resting = false;
+
+    // for timers
     private float restTime = 2;
     private float timeToStop;
     private float timeTillAttack;
-    private bool is_attacking;
 
     void Start()
     {
@@ -80,18 +90,6 @@ public class EnemyAI : CharacterHandler
         }
     }
 
-    public void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null) return;
-        
-        Vector3 line_start_position = attackPoint.position;
-        Vector3 line_end_position = attackPoint.position;
-        line_start_position.x -= attackRange;
-        line_end_position.x += attackRange;
-
-        Gizmos.DrawLine(line_start_position, line_end_position);
-    }
-
     private void CountDownAttack()
     {
         timeTillAttack += Time.deltaTime;
@@ -111,5 +109,17 @@ public class EnemyAI : CharacterHandler
         } else {
             is_attacking = false;
         }
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
+        
+        Vector3 line_start_position = attackPoint.position;
+        Vector3 line_end_position = attackPoint.position;
+        line_start_position.x -= attackRange;
+        line_end_position.x += attackRange;
+
+        Gizmos.DrawLine(line_start_position, line_end_position);
     }
 }
