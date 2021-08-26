@@ -11,19 +11,23 @@ public class EnemyAI : CharacterHandler
     public float moveRange = 4.0f;
 
     // makes AI move left or right (-1 or 1);
-    private int move = 0;
+    int move = 0;
 
     // saves the starting position so it can be used as a reference to drive AI movement
-    private Vector3 startPos;
+    Vector3 startPos;
 
     // state checking
-    private bool is_attacking;
-    private bool resting = false;
+    bool is_attacking;
+    bool resting = false;
 
     // for timers
-    private float restTime = 2;
-    private float timeToStop;
-    private float timeTillAttack;
+    float restTime = 2;
+    float timeToStop;
+    float timeTillAttack;
+
+    // for calculating the range of attack
+    Vector3 line_start_position;
+    Vector3 line_end_position;
 
     void Start()
     {
@@ -33,9 +37,16 @@ public class EnemyAI : CharacterHandler
         timeTillAttack = Time.deltaTime;
         StartGame();
         SetRandomMoveDirection();
+
+        // calculating attack range
+        if (attackPoint == null) return;
+        line_start_position = attackPoint.position;
+        line_end_position = attackPoint.position;
+        
+        line_start_position.x -= attackRange;
+        line_end_position.x += attackRange;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         CountDownAttack();
@@ -98,7 +109,7 @@ public class EnemyAI : CharacterHandler
             is_attacking = true;
             Stop();
             animator.SetTrigger("AttackOne");
-            // Attack()
+            Attack(0.5f);
         }
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("ShieldDroid_Attack"))
@@ -111,15 +122,20 @@ public class EnemyAI : CharacterHandler
         }
     }
 
+    protected override void DealDamage()
+    {
+        if (!is_dazed)
+        {
+            RaycastHit2D[] hitEnemies = Physics2D.LinecastAll(line_start_position, line_end_position, enemyLayers);
+            foreach(RaycastHit2D enemy in hitEnemies)
+            {
+                enemy.transform.gameObject.GetComponent<Player>().TakeDamage(damageValue);
+            }
+        }
+    }
+
     public void OnDrawGizmosSelected()
     {
-        if (attackPoint == null) return;
-        
-        Vector3 line_start_position = attackPoint.position;
-        Vector3 line_end_position = attackPoint.position;
-        line_start_position.x -= attackRange;
-        line_end_position.x += attackRange;
-
         Gizmos.DrawLine(line_start_position, line_end_position);
     }
 }

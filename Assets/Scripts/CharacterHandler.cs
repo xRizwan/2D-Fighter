@@ -23,7 +23,7 @@ public class CharacterHandler : MonoBehaviour
     protected bool is_grounded = true;
     [SerializeField] protected float m_jump_force = 8;
     public int health { get; protected set; } = 100;
-    [SerializeField] private int damageValue = 10;
+    [SerializeField] protected int damageValue = 10;
     protected bool is_dazed = false;
     [SerializeField] protected float dazeDuration = 0.5f;
     public bool can_attack = false;
