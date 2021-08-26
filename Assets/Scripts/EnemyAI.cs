@@ -38,6 +38,8 @@ public class EnemyAI : CharacterHandler
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (healthManager.is_dead) return;
+        
         CountDownAttack();
         
         Rest();
@@ -92,6 +94,8 @@ public class EnemyAI : CharacterHandler
 
     private void CountDownAttack()
     {
+        if (healthManager.is_dead) return;
+
         timeTillAttack += Time.deltaTime;
         if (timeTillAttack >= attackInterval)
         {
@@ -113,7 +117,7 @@ public class EnemyAI : CharacterHandler
 
     protected override void DealDamage()
     {
-        if (!healthManager.is_dazed)
+        if (!healthManager.is_dazed && !healthManager.is_dead)
         {
             Vector3 line_start_position = attackPoint.position;
             Vector3 line_end_position = attackPoint.position;

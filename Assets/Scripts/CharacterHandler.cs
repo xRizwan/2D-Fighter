@@ -74,7 +74,7 @@ public class CharacterHandler : MonoBehaviour
     // Attacks nearby enemy by creating a circle to check if they're within it's bounds
     protected virtual void DealDamage()
     {
-        if (!healthManager.is_dazed && can_attack)
+        if (!healthManager.is_dazed && can_attack && !healthManager.is_dead)
         {
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 

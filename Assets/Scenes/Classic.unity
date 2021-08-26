@@ -4807,6 +4807,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+--- !u!1 &924387150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924387151}
+  m_Layer: 9
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &924387151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924387150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.46, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1140003812}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019528976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4937,6 +4967,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1404330529}
+  - {fileID: 924387151}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4998,7 +5029,7 @@ MonoBehaviour:
   ground_layer:
     serializedVersion: 2
     m_Bits: 64
-  ground_check: {fileID: 0}
+  ground_check: {fileID: 924387151}
   animator: {fileID: 1140003816}
   should_attack: 0
   attackRange: 2.9
@@ -5044,6 +5075,7 @@ MonoBehaviour:
   is_dead: 0
   is_dazed: 0
   dazeDuration: 0.5
+  characterName: ShieldDroid
 --- !u!1 &1404330528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5056,7 +5088,7 @@ GameObject:
   m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

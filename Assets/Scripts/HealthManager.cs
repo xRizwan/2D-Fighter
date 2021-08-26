@@ -10,6 +10,8 @@ public class HealthManager : MonoBehaviour
     public bool is_dead = false;
     public bool is_dazed = false;
     public float dazeDuration = 0.5f;
+    public string characterName = "Player";
+    private Rigidbody2D rigidBody;
 
     void Start()
     {
@@ -31,7 +33,7 @@ public class HealthManager : MonoBehaviour
             return;
         }
     }
-        public virtual void IsDead()
+    public virtual void IsDead()
     {
         animator.SetTrigger("Is_Dead");
         is_dead = true;
@@ -46,6 +48,6 @@ public class HealthManager : MonoBehaviour
 
     public virtual void Hurt()
     {
-        animator.Play("Player_Hurt");
+        animator.Play(characterName + "_Hurt");
     }
 }
