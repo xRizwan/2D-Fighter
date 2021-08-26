@@ -1339,6 +1339,10 @@ PrefabInstance:
       propertyPath: m_jump_force
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 3273247103798177032, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+      propertyPath: enemyLayers.m_Bits
+      value: 768
+      objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177033, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: m_Mass
       value: 2
@@ -1464,8 +1468,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1140003812}
   - component: {fileID: 1140003811}
-  - component: {fileID: 1140003814}
   - component: {fileID: 1140003813}
+  - component: {fileID: 1140003815}
+  - component: {fileID: 1140003814}
+  - component: {fileID: 1140003816}
   m_Layer: 9
   m_Name: ShieldDroid
   m_TagString: Untagged
@@ -1532,7 +1538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140003810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.58, y: -3.19, z: 0}
+  m_LocalPosition: {x: 11.65, y: -3.61, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1404330529}
@@ -1559,9 +1565,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &1140003814
-BoxCollider2D:
+  m_Constraints: 4
+--- !u!70 &1140003814
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1573,19 +1579,61 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.034364223, y: -0.13745666}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.903226, y: 1}
-    newSize: {x: 2.903226, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6008272, y: 0.7250867}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.023516893, y: -0.13302028}
+  m_Size: {x: 0.6456418, y: 0.70003366}
+  m_Direction: 0
+--- !u!114 &1140003815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140003810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4552adc5db33694b83a629e8986a1ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovementSmoothing: 0.5
+  m_speed: 12
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  attackPoint: {fileID: 1404330529}
+  ground_layer:
+    serializedVersion: 2
+    m_Bits: 64
+  ground_check: {fileID: 0}
+  animator: {fileID: 1140003816}
+  should_attack: 0
+  is_dead: 0
+  attackRange: 2.9
+  m_facing_right: 1
+  m_jump_force: 8
+  damageValue: 10
+  dazeDuration: 0.5
+  can_attack: 0
+  attackInterval: 7
+  moveRange: 3
+--- !u!95 &1140003816
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140003810}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ec2ebe7f105bf24d9d67957027a6884, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1404330528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,7 +1658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404330528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.22, z: 0}
+  m_LocalPosition: {x: 0, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1140003812}

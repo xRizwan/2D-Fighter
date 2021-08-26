@@ -14,7 +14,6 @@ public class CharacterHandler : MonoBehaviour
     public LayerMask ground_layer;
     public Transform ground_check;
     public Animator animator;
-    public KeyCode attackKey;
     
     public bool should_attack;
     public bool is_dead;
@@ -27,15 +26,11 @@ public class CharacterHandler : MonoBehaviour
     [SerializeField] private int damageValue = 10;
     protected bool is_dazed = false;
     [SerializeField] protected float dazeDuration = 0.5f;
-
-    public HealthBar healthBar;
     public bool can_attack = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public virtual void StartGame()
     {
         m_rb = GetComponent<Rigidbody2D>();
-        healthBar.SetMaxHealth(health);
     }
 
     public virtual void CheckForGround()
@@ -102,10 +97,10 @@ public class CharacterHandler : MonoBehaviour
         Hurt();
         Invoke("Undaze", dazeDuration);
         health -= damageToTake;
-        healthBar.SetHealth(health);
 
         if (health <= 0) {
             IsDead();
+            return;
         }
     }
 
@@ -134,12 +129,5 @@ public class CharacterHandler : MonoBehaviour
         Vector3 _scale = transform.localScale;
         _scale.x *= -1;
         transform.localScale = _scale;
-    }
-
-    // Displays the radius of the attack range(circle), when the character is selected in the editor
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null) return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

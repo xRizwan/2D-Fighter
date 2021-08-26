@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player : CharacterHandler
 {
+    public HealthBar healthBar;
     public int playerNumber;
+    public KeyCode attackKey;
     private float horizontal;
     private float vertical;
 
@@ -21,6 +23,13 @@ public class Player : CharacterHandler
     void Awake()
     {
         health = 100;
+    }
+
+    void Start()
+    {
+
+        StartGame();
+        healthBar.SetMaxHealth(health);
     }
 
     void Update()
@@ -74,6 +83,19 @@ public class Player : CharacterHandler
         
         if (is_grounded)
             animator.SetBool(JUMPING, false);
+    }
+
+    public override void TakeDamage(int damageToTake)
+    {
+        base.TakeDamage(damageToTake);
+        healthBar.SetHealth(health);
+    }
+
+    // Displays the radius of the attack range(circle), when the character is selected in the editor
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
 }
