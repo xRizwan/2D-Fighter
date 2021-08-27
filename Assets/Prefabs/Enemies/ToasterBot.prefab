@@ -159,7 +159,7 @@ MonoBehaviour:
   damageValue: 10
   can_attack: 0
   char_name: ToasterBot
-  attackInterval: 7
+  attackInterval: 5
   moveRange: 3
   bumpDamage: 10
   bumpSpeed: 50
