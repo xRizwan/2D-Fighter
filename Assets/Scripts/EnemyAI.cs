@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAI : CharacterHandler
 {
+    public string char_name = "ShieldDroid";
     // the amount of seconds after which the AI can attack
     public float attackInterval = 7.0f;
 
@@ -28,6 +29,9 @@ public class EnemyAI : CharacterHandler
     // enemy bump interactions
     public int bumpDamage = 10;
     public float bumpSpeed = 50.0f;
+
+    public float attackRangeLeft;
+    public float attackRangeRight;
 
     void Start()
     {
@@ -109,7 +113,7 @@ public class EnemyAI : CharacterHandler
             Attack(0.5f);
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("ShieldDroid_Attack"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(char_name + "_Attack"))
         {
             is_attacking = true;
             timeTillAttack = 0;
@@ -125,8 +129,14 @@ public class EnemyAI : CharacterHandler
         {
             Vector3 line_start_position = attackPoint.position;
             Vector3 line_end_position = attackPoint.position;
-            line_start_position.x -= attackRange;
-            line_end_position.x += attackRange;
+
+            if (m_facing_right) {
+                line_start_position.x -= attackRangeLeft;
+                line_end_position.x += attackRangeRight;
+            } else {
+                line_start_position.x -= attackRangeRight;
+                line_end_position.x += attackRangeLeft;
+            }
 
             RaycastHit2D[] hitEnemies = Physics2D.LinecastAll(line_start_position, line_end_position, enemyLayers);
             foreach(RaycastHit2D enemy in hitEnemies)
@@ -142,8 +152,14 @@ public class EnemyAI : CharacterHandler
         
         Vector3 line_start_position = attackPoint.position;
         Vector3 line_end_position = attackPoint.position;
-        line_start_position.x -= attackRange;
-        line_end_position.x += attackRange;
+
+        if (m_facing_right) {
+            line_start_position.x -= attackRangeLeft;
+            line_end_position.x += attackRangeRight;
+        } else {
+            line_start_position.x -= attackRangeRight;
+            line_end_position.x += attackRangeLeft;
+        }
 
         Gizmos.DrawLine(line_start_position, line_end_position);
     }
