@@ -25,6 +25,10 @@ public class EnemyAI : CharacterHandler
     private float timeToStop;
     private float timeTillAttack;
 
+    // enemy bump interactions
+    public int bumpDamage = 10;
+    public float bumpSpeed = 50.0f;
+
     void Start()
     {
         is_attacking = false;
@@ -38,7 +42,7 @@ public class EnemyAI : CharacterHandler
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (healthManager.is_dead) return;
+        if (healthManager.is_dead || healthManager.is_dazed) return;
         
         CountDownAttack();
         
@@ -142,5 +146,16 @@ public class EnemyAI : CharacterHandler
         line_end_position.x += attackRange;
 
         Gizmos.DrawLine(line_start_position, line_end_position);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            collision.gameObject.GetComponent<HealthManager>().TakeDamage(bumpDamage);
+            int direction = collision.gameObject.GetComponent<Player>().m_facing_right ? -1 : 1;
+            collision.transform.Translate((direction * collision.gameObject.transform.right) * bumpSpeed * Mathf.Abs(timeToStop - 3) * Time.deltaTime);
+        }
     }
 }

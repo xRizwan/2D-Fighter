@@ -20,7 +20,7 @@ public class CharacterHandler : MonoBehaviour
     public bool should_attack;
     public float attackRange = 0.5f;
 
-    [SerializeField] protected bool m_facing_right = true;
+    public bool m_facing_right = true;
     protected bool is_grounded = true;
     [SerializeField] protected float m_jump_force = 8;
     [SerializeField] protected int damageValue = 10;

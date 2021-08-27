@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3273247103798177030}
   m_Layer: 7
   m_Name: Warrior
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   health: 100
+  is_dead: 0
+  is_dazed: 0
+  dazeDuration: 0.5
+  characterName: Player
 --- !u!114 &3273247103798177032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,12 +131,10 @@ MonoBehaviour:
   ground_check: {fileID: 3273247105398556978}
   animator: {fileID: 3273247103798177031}
   should_attack: 0
-  is_dead: 0
   attackRange: 1
   m_facing_right: 1
   m_jump_force: 40
   damageValue: 10
-  dazeDuration: 0.7
   can_attack: 0
   playerNumber: 1
   attackKey: 108
