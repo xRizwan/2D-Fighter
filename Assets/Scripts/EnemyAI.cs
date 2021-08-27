@@ -33,6 +33,8 @@ public class EnemyAI : CharacterHandler
     public float attackRangeLeft;
     public float attackRangeRight;
 
+    public float attackDelay = 0.5f;
+
     void Start()
     {
         is_attacking = false;
@@ -46,7 +48,7 @@ public class EnemyAI : CharacterHandler
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (healthManager.is_dead || healthManager.is_dazed) return;
+        if (healthManager.is_dead || healthManager.is_dazed) {Stop(); return; }
         
         CountDownAttack();
         
@@ -110,7 +112,7 @@ public class EnemyAI : CharacterHandler
             is_attacking = true;
             Stop();
             animator.SetTrigger("AttackOne");
-            Attack(0.5f);
+            Attack(attackDelay);
         }
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(char_name + "_Attack"))
@@ -170,6 +172,7 @@ public class EnemyAI : CharacterHandler
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             collision.gameObject.GetComponent<HealthManager>().TakeDamage(bumpDamage);
+            
             int direction = collision.gameObject.GetComponent<Player>().m_facing_right ? -1 : 1;
             collision.transform.Translate((direction * collision.gameObject.transform.right) * bumpSpeed * Mathf.Abs(timeToStop - 3) * Time.deltaTime);
         }
