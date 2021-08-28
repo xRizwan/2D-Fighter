@@ -292,6 +292,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+--- !u!1 &296288204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296288205}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &296288205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296288204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.77662, y: -6.7495613, z: -0.15597491}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &765189363
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +923,7 @@ MonoBehaviour:
   m_jump_force: 8
   damageValue: 10
   can_attack: 0
+  castingPrefab: {fileID: 5048544892906102531, guid: bea9fb9f5fd353a4b8b620eb593186b3, type: 3}
   player: {fileID: 7696816}
   stop_x_from_player: 4
   attack_delay: 3
@@ -950,7 +981,6 @@ MonoBehaviour:
   is_dead: 0
   is_dazed: 0
   dazeDuration: 0
-  characterName: BringerOfDeath
 --- !u!1 &1232099339
 GameObject:
   m_ObjectHideFlags: 0

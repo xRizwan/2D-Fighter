@@ -18,6 +18,7 @@ public class Spell : MonoBehaviour
     public void Attack(float delay)
     {
         Invoke("DealDamage", delay);
+        Destroy(gameObject, 2.4f);
     }
 
     // Attacks nearby enemy by creating a circle to check if they're within it's bounds
@@ -27,7 +28,10 @@ public class Spell : MonoBehaviour
 
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<HealthManager>().TakeDamage(damageValue);
+            if (enemy.gameObject.CompareTag("Player")) 
+            {
+                enemy.GetComponent<HealthManager>().TakeDamage(damageValue);
+            }
         }
     }
 

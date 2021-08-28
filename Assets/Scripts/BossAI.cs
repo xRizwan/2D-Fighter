@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossAI : CharacterHandler
 {
+    public GameObject castingPrefab;
     public Transform player;
     public float stop_x_from_player = 4.0f;
     public float attack_delay = 3.0f;
@@ -38,14 +39,17 @@ public class BossAI : CharacterHandler
 
         if (healthManager.is_dazed || healthManager.is_dead) return;
 
-        if (go_to_next_move && !should_attack && !should_cast) DecideNextMove();
-        
-        if (!reached_destination && should_attack && !should_cast) {
-            FollowPlayer();
-        }
+        if (go_to_next_move && !should_attack && !should_cast && !can_attack) DecideNextMove();
         
         InitiateAttack();
         Cast();
+    }
+
+    void FixedUpdate()
+    {
+        if (!reached_destination && should_attack && !should_cast) {
+            FollowPlayer();
+        }
     }
 
     public override void Move(float horizontal)
@@ -66,6 +70,8 @@ public class BossAI : CharacterHandler
 
         if (result == 2) should_cast = true;
         else should_attack = true;
+
+        Debug.Log("Here");
     }
 
     // follows player
@@ -86,7 +92,7 @@ public class BossAI : CharacterHandler
         {
             Stop();
             can_attack = true;
-            should_attack = false;
+            should_attack = true;
             reached_destination = true;
         }
     }
@@ -94,13 +100,19 @@ public class BossAI : CharacterHandler
     // attacks player if allowed
     private void InitiateAttack()
     {
-        if (can_attack)
+        if (can_attack && should_attack)
         {
             animator.SetTrigger("AttackOne");
-            // Attack(0.2f);
-            Debug.Log("Attacking");
-            ResetState();
+            Attack(0.4f);
+            should_attack = false;
         }
+    }
+
+    protected override void DealDamage()
+    {
+        Debug.Log("Attacking");
+        base.DealDamage();
+        ResetState();
     }
 
     // for casting magic spell
@@ -110,7 +122,12 @@ public class BossAI : CharacterHandler
             if (IsToRight() && !m_facing_right) Flip();
             else if (IsToLeft() && m_facing_right) Flip();
 
-            Debug.Log("Casting");
+            animator.SetTrigger("Casting");
+            
+            Vector2 prefab_position = player.transform.position;
+            prefab_position.y += 2;
+
+            Instantiate(castingPrefab, prefab_position, castingPrefab.transform.rotation);
             ResetState();
         }
     }
