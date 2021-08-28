@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementSmoothing: 0.5
-  m_speed: 8
+  m_speed: 20
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128

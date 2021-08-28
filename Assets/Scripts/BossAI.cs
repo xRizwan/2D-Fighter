@@ -5,7 +5,6 @@ using UnityEngine;
 public class BossAI : CharacterHandler
 {
     public Transform player;
-    private Vector3 lastPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +14,23 @@ public class BossAI : CharacterHandler
     // Update is called once per frame
     void Update()
     {
+        FollowPlayer();
     }
 
     private void FollowPlayer()
     {
+        Debug.Log(player.position.x);
+        Debug.Log(player.position.x == transform.position.x);
+
         if (player.position.x > transform.position.x) Move(1);
         else if(player.position.x < transform.position.x) Move(-1);
+
+    }
+
+    public override void Move(float horizontal)
+    {
+        animator.SetFloat("Speed", horizontal);
+        base.Move(horizontal);
     }
 
     // Displays the radius of the attack range(circle), when the character is selected in the editor
