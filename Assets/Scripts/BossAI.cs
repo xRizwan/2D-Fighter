@@ -5,13 +5,13 @@ using UnityEngine;
 public class BossAI : CharacterHandler
 {
     public Transform player;
-    private bool reached_destination;
     public float stop_x_from_player = 4.0f;
     public float attack_delay = 3.0f;
     private float next_move_time;
     private bool go_to_next_move;
     private bool should_cast;
     private bool level_started;
+    private bool reached_destination;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +35,8 @@ public class BossAI : CharacterHandler
             next_move_time += Time.deltaTime;
             if(next_move_time >= attack_delay) go_to_next_move = true;
         }
+
+        if (healthManager.is_dazed || healthManager.is_dead) return;
 
         if (go_to_next_move && !should_attack && !should_cast) DecideNextMove();
         
