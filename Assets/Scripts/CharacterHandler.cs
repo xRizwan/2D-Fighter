@@ -88,7 +88,7 @@ public class CharacterHandler : MonoBehaviour
     }
 
     // Flips the character left/right
-    private void Flip() {
+    protected void Flip() {
         m_facing_right = !m_facing_right;
 
         Vector3 _scale = transform.localScale;

@@ -7,26 +7,70 @@ public class BossAI : CharacterHandler
     public Transform player;
     private bool reached_destination;
     public float stop_x_from_player = 4.0f;
+    public float attack_delay = 3.0f;
+    private float next_move_time;
+    private bool go_to_next_move;
+    private bool should_cast;
+    private bool level_started;
 
     // Start is called before the first frame update
     void Start()
     {
         StartGame();
+        next_move_time = attack_delay;
+        go_to_next_move = true;
+        level_started = true;
+        should_attack = false;
+        should_cast = false;
+
+        StartCoroutine("StartStage");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!reached_destination) {
+        if (level_started) return;
+
+        if (!go_to_next_move) {
+            next_move_time += Time.deltaTime;
+            if(next_move_time >= attack_delay) go_to_next_move = true;
+        }
+
+        if (go_to_next_move && !should_attack && !should_cast) DecideNextMove();
+        
+        if (!reached_destination && should_attack && !should_cast) {
             FollowPlayer();
         }
+        
         InitiateAttack();
+        Cast();
     }
 
+    public override void Move(float horizontal)
+    {
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
+        base.Move(horizontal);
+    }
+    public override void Stop()
+    {
+        animator.SetFloat("Speed", 0);
+        base.Stop();
+    }
+
+    // chooses whether to cast magic or attack player with melee weapon
+    private void DecideNextMove()
+    {
+        int result = Random.Range(0, 3);
+
+        if (result == 2) should_cast = true;
+        else should_attack = true;
+    }
+
+    // follows player
     private void FollowPlayer()
     {
-        bool is_to_right = player.position.x > transform.position.x;
-        bool is_to_left = player.position.x < transform.position.x;
+        bool is_to_right = IsToRight();
+        bool is_to_left = IsToLeft();
 
         if (is_to_right) Move(1);
         else if(is_to_left) Move(-1);
@@ -40,45 +84,43 @@ public class BossAI : CharacterHandler
         {
             Stop();
             can_attack = true;
+            should_attack = false;
             reached_destination = true;
         }
-
-        // if (is_to_right && transform.position.x >= player.position.x - 4){
-        //     Stop();
-        //     can_attack = true;
-        //     reached_destination = true;
-        // }
-        // else if (is_to_left && transform.position.x <= player.position.x + 4){
-        //     Stop();
-        // }
     }
 
-    public override void Move(float horizontal)
-    {
-        animator.SetFloat("Speed", Mathf.Abs(horizontal));
-        base.Move(horizontal);
-    }
-
+    // attacks player if allowed
     private void InitiateAttack()
     {
         if (can_attack)
         {
             animator.SetTrigger("AttackOne");
             // Attack(0.2f);
-            // Debug.Log("Attacking");
-            can_attack = false;
+            Debug.Log("Attacking");
+            ResetState();
         }
     }
 
-    private void ResetState(){
-        can_attack = false;
-        reached_destination = false;
+    // for casting magic spell
+    private void Cast()
+    {
+        if (should_cast) {
+            if (IsToRight() && !m_facing_right) Flip();
+            else if (IsToLeft() && m_facing_right) Flip();
+
+            Debug.Log("Casting");
+            ResetState();
+        }
     }
 
-    public override void Stop()
-    {
-        animator.SetFloat("Speed", 0);
-        base.Stop();
+    // resets boss state;
+    private void ResetState(){
+        reached_destination = false;
+        go_to_next_move = false;
+        should_attack = false;
+        should_cast = false;
+        can_attack = false;
+        next_move_time = 0;
     }
 
     // Displays the radius of the attack range(circle), when the character is selected in the editor
@@ -87,4 +129,21 @@ public class BossAI : CharacterHandler
         if (attackPoint == null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
+    private IEnumerator StartStage()
+    {
+        yield return new WaitForSeconds(2);
+        level_started = false;
+    }
+
+    private bool IsToRight()
+    {
+        return player.position.x > transform.position.x;
+    }
+
+    private bool IsToLeft()
+    {
+        return player.position.x < transform.position.x;
+    }
+
 }
