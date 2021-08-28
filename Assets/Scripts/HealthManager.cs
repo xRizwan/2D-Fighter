@@ -48,6 +48,7 @@ public class HealthManager : MonoBehaviour
 
     public virtual void Hurt()
     {
-        animator.Play(characterName + "_Hurt");
+        animator.SetTrigger("Hurt");
+        // animator.Play(characterName + "_Hurt");
     }
 }

@@ -949,7 +949,7 @@ MonoBehaviour:
   health: 120
   is_dead: 0
   is_dazed: 0
-  dazeDuration: 0.5
+  dazeDuration: 0
   characterName: BringerOfDeath
 --- !u!1 &1232099339
 GameObject:
