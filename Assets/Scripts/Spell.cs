@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
+    public LayerMask enemyLayers;
     public Transform attackPoint;
     public float attackRangeX;
     public float attackRangeY;
     public int damageValue;
-    public LayerMask enemyLayers;
 
     void Start()
     {
@@ -34,15 +34,6 @@ public class Spell : MonoBehaviour
     public void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
-        
-        Vector3 line_start_position = attackPoint.position;
-        Vector3 line_end_position = attackPoint.position;
-
-        // line_start_position.y += attackRangeUp;
-        // line_end_position.y -= attackRangeDown;
-
-        // Gizmos.DrawLine(line_start_position, line_end_position);
-        // Gizmos.Draw(attackPoint.position, attackRangeDown);
         Gizmos.DrawCube(attackPoint.position, new Vector3(attackRangeX, attackRangeY, 0));
     }
 }
