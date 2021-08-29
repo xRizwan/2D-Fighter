@@ -71,6 +71,7 @@ public class HealthManager : MonoBehaviour
     public virtual void Hurt()
     {
         animator.SetTrigger("Hurt");
+        animator.SetFloat("Speed", 0);
         animator.SetBool("Is_Jumping", false);
     }
 
