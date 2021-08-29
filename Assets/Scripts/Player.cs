@@ -100,6 +100,7 @@ public class Player : CharacterHandler
     {
         if (collider.CompareTag("Water"))
         {
+            if (!tiles) return;
             Invoke("LandToNearestTile", 0.5f);
         }
     }

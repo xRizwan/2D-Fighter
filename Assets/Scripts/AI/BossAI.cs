@@ -124,12 +124,16 @@ public class BossAI : CharacterHandler
 
             animator.SetTrigger("Casting");
             
-            Vector2 prefab_position = player.transform.position;
-            prefab_position.y += 2;
-
-            Instantiate(castingPrefab, prefab_position, castingPrefab.transform.rotation);
+            Invoke("InstantiateSpell", 0.1f);
             ResetState();
         }
+    }
+
+    private void InstantiateSpell()
+    {
+        Vector2 prefab_position = player.transform.position;
+        prefab_position.y += 2;
+        Instantiate(castingPrefab, prefab_position, castingPrefab.transform.rotation);
     }
 
     // resets boss state;
