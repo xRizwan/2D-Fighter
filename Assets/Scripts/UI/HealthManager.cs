@@ -56,6 +56,7 @@ public class HealthManager : MonoBehaviour
     // triggers hurt animation
     public virtual void Hurt()
     {
+        animator.SetBool("Is_Jumping", false);
         animator.SetTrigger("Hurt");
     }
 
