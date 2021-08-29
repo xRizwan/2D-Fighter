@@ -105,6 +105,8 @@ MonoBehaviour:
   is_dead: 0
   is_dazed: 0
   dazeDuration: 0
+  immuneDuration: 0
+  isImmune: 0
 --- !u!114 &7939261226987428242
 MonoBehaviour:
   m_ObjectHideFlags: 0
