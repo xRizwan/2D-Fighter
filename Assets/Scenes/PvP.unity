@@ -32005,6 +32005,8 @@ MonoBehaviour:
   is_dead: 0
   is_dazed: 0
   dazeDuration: 0.5
+  immuneDuration: 0
+  isImmune: 0
 --- !u!1 &1769356746
 GameObject:
   m_ObjectHideFlags: 0
@@ -38456,6 +38458,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 7976517130604929130}
+    - target: {fileID: 3273247103798177032, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+      propertyPath: attackKey
+      value: 122
+      objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177032, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: healthBar
       value: 

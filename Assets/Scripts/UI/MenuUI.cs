@@ -11,6 +11,11 @@ public class MenuUI : MonoBehaviour
 
     public void StartGame()
     {
+        SceneManager.LoadScene("Classic");
+    }
+
+    public void StartLocalMultipler()
+    {
         SceneManager.LoadScene("PvP");
     }
 

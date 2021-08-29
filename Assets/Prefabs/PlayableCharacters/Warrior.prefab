@@ -106,7 +106,8 @@ MonoBehaviour:
   is_dead: 0
   is_dazed: 0
   dazeDuration: 0.5
-  characterName: Player
+  immuneDuration: 0
+  isImmune: 0
 --- !u!114 &3273247103798177032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ MonoBehaviour:
   damageValue: 10
   can_attack: 0
   playerNumber: 1
-  attackKey: 108
+  attackKey: 122
 --- !u!50 &3273247103798177033
 Rigidbody2D:
   serializedVersion: 4
