@@ -5,8 +5,10 @@ using UnityEngine.Tilemaps;
 
 public class Player : CharacterHandler
 {
-    public int playerNumber;
+    // attack key
     public KeyCode attackKey;
+    public int playerNumber;
+
     private float horizontal;
     private float vertical;
 
@@ -20,12 +22,14 @@ public class Player : CharacterHandler
     const string TRANSITION1 = "Player_Attack_Transition_0";
     const string TRANSITION2 = "Player_Attack_Transition_1";
 
+    // for tilemap referencing and fall handling
     private Vector3 lastLandPos;
     private Tilemap tiles;
 
     void Start()
     {
         StartGame();
+        // finding tilemap_base(ground tiles) if they exist
         if (GameObject.Find("Tilemap_Base"))
             tiles = GameObject.Find("Tilemap_Base").GetComponent<Tilemap>();
     }
@@ -79,6 +83,8 @@ public class Player : CharacterHandler
     {
         base.CheckForGround();
         
+        // if is_grounded set current position as lastLandPos
+        // used for handling falls and finding closest tiles
         if (is_grounded)
         {
             lastLandPos = transform.position;
@@ -110,6 +116,8 @@ public class Player : CharacterHandler
         healthManager.TakeDamageNoAnim(10);
 
         foreach (var position in tiles.cellBounds.allPositionsWithin) {
+            
+            // checking if a tile exists at the position
             if (!tiles.HasTile(position)) {
                 continue;
             }

@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class BossAI : CharacterHandler
 {
+    // prefab of the spell object
     public GameObject castingPrefab;
     public Transform player;
+
+    // how close to the player to go while following the player
     public float stop_x_from_player = 4.0f;
+
+    // delay before next move can be decided
     public float attack_delay = 3.0f;
     private float next_move_time;
     private bool go_to_next_move;
     private bool should_cast;
     private bool level_started;
+
+    // if boss has reached close enough to the player
     private bool reached_destination;
 
     // Start is called before the first frame update
@@ -32,6 +39,8 @@ public class BossAI : CharacterHandler
     {
         if (level_started) return;
 
+        // if we can't go to the next move
+        // countup till we can go to the next move
         if (!go_to_next_move) {
             next_move_time += Time.deltaTime;
             if(next_move_time >= attack_delay) go_to_next_move = true;
@@ -39,8 +48,10 @@ public class BossAI : CharacterHandler
 
         if (healthManager.is_dazed || healthManager.is_dead) return;
 
+        // decide whether to go to perform melee attack or cast magic
         if (go_to_next_move && !should_attack && !should_cast && !can_attack) DecideNextMove();
         
+        // casting and attacking
         InitiateAttack();
         Cast();
     }
@@ -57,6 +68,7 @@ public class BossAI : CharacterHandler
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         base.Move(horizontal);
     }
+
     public override void Stop()
     {
         animator.SetFloat("Speed", 0);
@@ -129,6 +141,7 @@ public class BossAI : CharacterHandler
         }
     }
 
+    // Instantiates a new spell object
     private void InstantiateSpell()
     {
         Vector2 prefab_position = player.transform.position;
