@@ -9,14 +9,16 @@ using UnityEditor;
 public class MenuUI : MonoBehaviour
 {
 
+    public LevelLoader levelLoader;
+
     public void StartGame()
     {
-        SceneManager.LoadScene("Classic");
+        levelLoader.LoadLevel("Classic");
     }
 
     public void StartLocalMultipler()
     {
-        SceneManager.LoadScene("PvP");
+        levelLoader.LoadLevel("PvP");
     }
 
     public void QuitGame()

@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     public string sceneName;
+    public GameObject canvas;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {
-            SceneManager.LoadScene(sceneName);
+            canvas.GetComponent<LevelLoader>().LoadLevel(sceneName);
         }
     }
 }

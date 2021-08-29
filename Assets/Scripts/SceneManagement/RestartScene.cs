@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class RestartScene : MonoBehaviour
 {
+    public LevelLoader levelLoader;
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        levelLoader.LoadLevel(SceneManager.GetActiveScene().name);
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("Menu");
+        levelLoader.LoadLevel("Menu");
     }
 }
