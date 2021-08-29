@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     {
         if (isGameEnd) return;
 
-        if (enemy.GetComponent<HealthManager>().health <= 0) Win();
+        if (enemy && enemy.GetComponent<HealthManager>().health <= 0) Win();
         else if(player.GetComponent<HealthManager>().health <= 0) Lose();
     }
 
@@ -43,6 +43,6 @@ public class LevelManager : MonoBehaviour
     {
         isGameEnd = true;
         resultText.SetActive(true);
-        enemy.GetComponent<BossAI>().enabled = false;
+        if (enemy) enemy.GetComponent<BossAI>().enabled = false;
     }
 }
