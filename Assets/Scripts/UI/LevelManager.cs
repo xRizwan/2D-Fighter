@@ -36,6 +36,7 @@ public class LevelManager : MonoBehaviour
     {
         resultText.GetComponent<Text>().text = loseString;
         restartButton.SetActive(true);
+        mainScreenButton.SetActive(true);
         GameOver();
     }
 

@@ -9,6 +9,7 @@ public class VictoryManager : MonoBehaviour
     public Slider player2;
     public GameObject victoryText;
     public GameObject restartButton;
+    public GameObject mainMenuButton;
     private Text winnerText;
 
     void Start()
@@ -32,5 +33,6 @@ public class VictoryManager : MonoBehaviour
     {
         victoryText.SetActive(true);
         restartButton.SetActive(true);
+        mainMenuButton.SetActive(true);
     }
 }
