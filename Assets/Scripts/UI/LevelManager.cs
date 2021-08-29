@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public GameObject mainScreenButton;
     public GameObject resultText;
 
-    string loseString = "You Lost!";
+    string loseString = "Congratulations, You Won!";
     string winString = "You Won!";
 
     public bool isGameEnd = false;
