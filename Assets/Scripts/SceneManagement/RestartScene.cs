@@ -9,4 +9,9 @@ public class RestartScene : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
