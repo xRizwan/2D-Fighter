@@ -38,9 +38,23 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    // handles damage received from enemys
+    public void TakeDamageNoAnim(int damageToTake)
+    {
+        if (is_dead) return;
+
+        health -= damageToTake;
+        if (healthBar) healthBar.SetHealth(health);
+        if (health <= 0) {
+            IsDead();
+            return;
+        }
+    }
+
     // disables collider and rigidbody and triggers death animation
     public virtual void IsDead()
     {
+        animator.SetBool("Is_Jumping", false);
         animator.SetTrigger("Is_Dead");
         is_dead = true;
         GetComponent<CapsuleCollider2D>().enabled = false;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Player : CharacterHandler
 {
@@ -19,10 +20,14 @@ public class Player : CharacterHandler
     const string TRANSITION1 = "Player_Attack_Transition_0";
     const string TRANSITION2 = "Player_Attack_Transition_1";
 
+    private Vector3 lastLandPos;
+    private Tilemap tiles;
+
     void Start()
     {
-
         StartGame();
+        if (GameObject.Find("Tilemap_Base"))
+            tiles = GameObject.Find("Tilemap_Base").GetComponent<Tilemap>();
     }
 
     void Update()
@@ -75,7 +80,10 @@ public class Player : CharacterHandler
         base.CheckForGround();
         
         if (is_grounded)
+        {
+            lastLandPos = transform.position;
             animator.SetBool(JUMPING, false);
+        }
         else 
             animator.SetBool(JUMPING, true);
     }
@@ -85,6 +93,39 @@ public class Player : CharacterHandler
     {
         if (attackPoint == null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    // for checking for falls below ground
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Water"))
+        {
+            Invoke("LandToNearestTile", 0.5f);
+        }
+    }
+
+    // checks against all tiles in the level and finds the tiles most nearest to player location
+    void LandToNearestTile() {
+        healthManager.TakeDamageNoAnim(10);
+
+        foreach (var position in tiles.cellBounds.allPositionsWithin) {
+            if (!tiles.HasTile(position)) {
+                continue;
+            }
+            Vector3 vector_pos = position;
+            bool foundTileLeft = vector_pos.x <= lastLandPos.x && vector_pos.x >= (lastLandPos.x - 5);
+            bool foundTileRight = vector_pos.x >= lastLandPos.x && vector_pos.x <= (lastLandPos.x + 5);
+
+            // if tile is found, move player to that tile
+            if (foundTileLeft || foundTileRight) {
+                vector_pos.x += 1;
+                vector_pos.y = lastLandPos.y;
+                if (!healthManager.is_dead) vector_pos.y += 8;
+                transform.position = vector_pos;
+                Stop();
+                break;
+            }
+        }
     }
 
 }
