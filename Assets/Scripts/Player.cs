@@ -76,6 +76,8 @@ public class Player : CharacterHandler
         
         if (is_grounded)
             animator.SetBool(JUMPING, false);
+        else 
+            animator.SetBool(JUMPING, true);
     }
 
     // Displays the radius of the attack range(circle), when the character is selected in the editor

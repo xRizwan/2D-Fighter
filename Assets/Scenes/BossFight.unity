@@ -222,6 +222,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 885555076}
+    - target: {fileID: 2219535176304680538, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+      propertyPath: immuneDuration
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177032, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: damageValue
       value: 5
@@ -296,17 +300,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
---- !u!114 &182664483 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2219535176304680538, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
-  m_PrefabInstance: {fileID: 182664482}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cbc9d51c43fb04bb65dc55cfb9849f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &296288204
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,11 +343,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2def5b287e758e545aabb589917866e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 182664483}
-  enemy: {fileID: 7939261228025350701}
-  restartButton: {fileID: 1214801076}
-  mainScreenButton: {fileID: 976985183}
-  resultText: {fileID: 1247461680}
+  player: {fileID: 1942398626}
+  enemy: {fileID: 1529021010}
+  restartButton: {fileID: 1214801074}
+  mainScreenButton: {fileID: 976985181}
+  resultText: {fileID: 1247461678}
+  isGameEnd: 0
 --- !u!1 &386684460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1445,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1529021010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7939261226987428246, guid: c72e6a8a234a23745a42fc7333586c5a, type: 3}
+  m_PrefabInstance: {fileID: 7939261228025350700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1608335881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,6 +2505,11 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &1942398626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3273247103798177037, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+  m_PrefabInstance: {fileID: 182664482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7939261228025350700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2561,6 +2565,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 7696816}
+    - target: {fileID: 7939261226987428242, guid: c72e6a8a234a23745a42fc7333586c5a, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 296288206}
     - target: {fileID: 7939261226987428246, guid: c72e6a8a234a23745a42fc7333586c5a, type: 3}
       propertyPath: m_Name
       value: BringerOfDeath
@@ -2571,14 +2579,3 @@ PrefabInstance:
       objectReference: {fileID: 959532963}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c72e6a8a234a23745a42fc7333586c5a, type: 3}
---- !u!114 &7939261228025350701 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7939261226987428333, guid: c72e6a8a234a23745a42fc7333586c5a, type: 3}
-  m_PrefabInstance: {fileID: 7939261228025350700}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cbc9d51c43fb04bb65dc55cfb9849f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

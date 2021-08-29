@@ -172,9 +172,6 @@ public class EnemyAI : CharacterHandler
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             collision.gameObject.GetComponent<HealthManager>().TakeDamage(bumpDamage);
-            
-            int direction = collision.gameObject.GetComponent<Player>().m_facing_right ? -1 : 1;
-            collision.transform.Translate((direction * collision.gameObject.transform.right) * bumpSpeed * Mathf.Abs(timeToStop - 3) * Time.deltaTime);
         }
     }
 }

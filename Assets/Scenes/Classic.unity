@@ -10266,6 +10266,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 2031482824}
+    - target: {fileID: 2219535176304680538, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+      propertyPath: immuneDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177032, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: m_speed
       value: 8

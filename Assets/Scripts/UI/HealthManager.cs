@@ -11,6 +11,8 @@ public class HealthManager : MonoBehaviour
     public bool is_dead = false;
     public bool is_dazed = false;
     public float dazeDuration = 0.5f;
+    public float immuneDuration = 0;
+    public bool isImmune;
 
     void Start()
     {
@@ -21,11 +23,13 @@ public class HealthManager : MonoBehaviour
     // handles damage received from enemys
     public void TakeDamage(int damageToTake)
     {
-        if (is_dead) return;
+        if (is_dead || isImmune) return;
         
         is_dazed = true;
+        isImmune = true;
         Hurt();
         Invoke("Undaze", dazeDuration);
+        Invoke("UnImmune", immuneDuration);
         health -= damageToTake;
         if (healthBar) healthBar.SetHealth(health);
         if (health <= 0) {
@@ -53,5 +57,10 @@ public class HealthManager : MonoBehaviour
     public virtual void Hurt()
     {
         animator.SetTrigger("Hurt");
+    }
+
+    private void UnImmune()
+    {
+        isImmune = false;
     }
 }
