@@ -32091,8 +32091,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04151373, y: -0.01961951}
-  m_Size: {x: 0.19845067, y: 0.3692392}
+  m_Offset: {x: -0.018, y: 0}
+  m_Size: {x: 0.16, y: 0.33}
   m_Direction: 0
 --- !u!95 &1756620161
 Animator:
@@ -32205,7 +32205,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3318188226485093758, guid: 5fc9c44b9b7ab304f8ce35e64ac3ccdf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c02aa58b9f2893545b2c0dd41d230692, type: 3}
   m_Color: {r: 0.7924528, g: 0.596285, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -32224,7 +32224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756620159}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.519419, y: -5.553908, z: 14.621771}
+  m_LocalPosition: {x: 22.519419, y: -6, z: 14.621771}
   m_LocalScale: {x: -10, y: 10, z: 10}
   m_Children:
   - {fileID: 1309043268}
@@ -38807,6 +38807,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 7976517130604929130}
+    - target: {fileID: 3273247103798177030, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177032, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: attackKey
       value: 122
@@ -38825,7 +38829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177035, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.613908
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177035, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: m_LocalPosition.z

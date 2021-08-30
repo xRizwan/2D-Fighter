@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177035, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.4
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177035, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2706,6 +2706,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 7696816}
+    - target: {fileID: 7939261226987428242, guid: c72e6a8a234a23745a42fc7333586c5a, type: 3}
+      propertyPath: attack_delay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7939261226987428246, guid: c72e6a8a234a23745a42fc7333586c5a, type: 3}
       propertyPath: m_Name
       value: BringerOfDeath
