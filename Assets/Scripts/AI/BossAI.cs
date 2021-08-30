@@ -25,11 +25,10 @@ public class BossAI : CharacterHandler
     void Start()
     {
         StartGame();
-        next_move_time = attack_delay;
-        go_to_next_move = true;
+        ResetState();
         level_started = true;
-        should_attack = false;
-        should_cast = false;
+        next_move_time = attack_delay;
+        
 
         StartCoroutine("StartStage");
     }
