@@ -40956,7 +40956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1464733340}
   background: {fileID: 808805246}
-  smoothTime: 1.7
+  smoothTime: 1
   offset: 5
   leftOffsetLimit: -0.9
 --- !u!1 &1721142421

@@ -11,7 +11,7 @@ public class FollowPlayer : MonoBehaviour
     public float offset = 7.0f;
     public float leftOffsetLimit = -0.9f;
 
-    void Update()
+    void FixedUpdate()
     {
         // handles player flipping (i.e looking left or right)
         if (player.localScale.x < 0 && offset > 0) offset = -offset;
