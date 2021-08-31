@@ -31,6 +31,9 @@ public class HealthManager : MonoBehaviour
         Invoke("Undaze", dazeDuration);
         Invoke("UnImmune", immuneDuration);
         health -= damageToTake;
+
+        if (gameObject.CompareTag("Player")) GameManager.Instance.UpdateScore(-2);
+
         if (healthBar) healthBar.SetHealth(health);
         if (health <= 0) {
             IsDead();
@@ -59,6 +62,12 @@ public class HealthManager : MonoBehaviour
         is_dead = true;
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<Rigidbody2D>().Sleep();
+
+        if (!gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Enemy Dead");
+            GameManager.Instance.UpdateScore(10);
+        }
     }
 
     // undazes the character

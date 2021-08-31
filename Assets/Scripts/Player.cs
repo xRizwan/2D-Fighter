@@ -107,6 +107,7 @@ public class Player : CharacterHandler
         if (collider.CompareTag("Water"))
         {
             if (!tiles) return;
+            GameManager.Instance.UpdateScore(-5);
             Invoke("LandToNearestTile", 0.5f);
         }
     }
