@@ -66,7 +66,8 @@ public class HealthManager : MonoBehaviour
         if (!gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy Dead");
-            GameManager.Instance.UpdateScore(10);
+            if (GameManager.Instance)
+                GameManager.Instance.UpdateScore(10);
         }
     }
 

@@ -9,12 +9,14 @@ public class RestartScene : MonoBehaviour
     public void Restart()
     {
         levelLoader.LoadLevel(SceneManager.GetActiveScene().name);
-        GameManager.Instance.restarted = true;
+        if (GameManager.Instance)
+            GameManager.Instance.restarted = true;
     }
 
     public void RestartGame()
     {
         levelLoader.LoadLevel("Menu");
-        GameManager.Instance.restarted = true;
+        if (GameManager.Instance)
+            GameManager.Instance.restarted = true;
     }
 }
