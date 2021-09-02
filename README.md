@@ -6,7 +6,8 @@ Made the complete game in 9 days, i didn't do any of the art which made it a who
 
 Controls :-
 
-Player 1 - Arrow keys and Z
-Player 2 - WAD and G
+  Player 1 - Arrow keys and Z
+
+  Player 2 - WAD and G
 
 Unity Play Link: https://play.unity.com/mg/other/webgl-builds-94329
