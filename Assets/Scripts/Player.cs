@@ -130,7 +130,7 @@ public class Player : CharacterHandler
             if (foundTileLeft || foundTileRight) {
                 vector_pos.x += 1;
                 vector_pos.y = lastLandPos.y;
-                if (!healthManager.is_dead) vector_pos.y += 5;
+                if (!healthManager.is_dead) vector_pos.y += 10;
                 transform.position = vector_pos;
                 Stop();
                 break;
