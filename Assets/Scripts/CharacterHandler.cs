@@ -95,4 +95,9 @@ public class CharacterHandler : MonoBehaviour
         _scale.x *= -1;
         transform.localScale = _scale;
     }
+
+    protected void ResetVelocityY()
+    {
+        m_rb.velocity = new Vector2(m_rb.velocity.x, 0f);
+    }
 }

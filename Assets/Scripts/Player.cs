@@ -9,6 +9,7 @@ public class Player : CharacterHandler
     public KeyCode attackKey;
     public int playerNumber;
 
+    // for getting input axis
     private float horizontal;
     private float vertical;
 
@@ -75,6 +76,7 @@ public class Player : CharacterHandler
         if (is_grounded && vertical > 0 && !healthManager.is_dazed)
         {
             animator.SetBool(JUMPING, true);
+            ResetVelocityY();
             base.Jump();
         }
     }

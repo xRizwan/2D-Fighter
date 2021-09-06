@@ -32180,7 +32180,7 @@ MonoBehaviour:
   should_attack: 0
   attackRange: 1
   m_facing_right: 0
-  m_jump_force: 30
+  m_jump_force: 115
   damageValue: 10
   can_attack: 0
   attackKey: 103
@@ -32857,7 +32857,7 @@ MonoBehaviour:
   should_attack: 0
   attackRange: 1
   m_facing_right: 1
-  m_jump_force: 30
+  m_jump_force: 115
   damageValue: 10
   can_attack: 0
   attackKey: 122
