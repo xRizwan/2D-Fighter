@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"D:/Study/Unity/Create with Code/2D-Theory/WebGL Builds;;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"D:/Study/WarriorsRevenge/WebGL Builds;D:/Study/Warrior's Revenge/WebGL Builds;D:/Study/Unity/Warrior's Revenge/WebGL Builds;D:/Study/Unity/Create with Code/2D-Theory/WebGL Builds;;;;;;\"}"
             }
         ]
     }
