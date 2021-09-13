@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Text
   m_EditorClassIdentifier: 
   dialogue:
-  - This is the first Text!.
+  - 'This is the first Text!.
+
+    Can''t Stop.'
   - This is the second Text!.
   responses:
   - responseText: Yes
