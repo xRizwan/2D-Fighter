@@ -5,6 +5,10 @@ using UnityEngine.Tilemaps;
 
 public class Player : CharacterHandler
 {
+    [SerializeField] private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable Interactable { get; set; }
+
     // attack key
     public KeyCode attackKey;
     public int playerNumber;
@@ -37,7 +41,7 @@ public class Player : CharacterHandler
 
     void Update()
     {
-        if (healthManager.health <= 0) return;
+        if (healthManager.health <= 0 || dialogueUI.IsOpen) return;
 
         if (Input.GetKeyDown(attackKey))
             should_attack = true;
@@ -46,11 +50,16 @@ public class Player : CharacterHandler
 
         horizontal = Input.GetAxis("Horizontal" + playerNumber);
         vertical = Input.GetAxis("Vertical" + playerNumber);
+    
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interactable?.Interact(this);
+        }
     }
 
     void FixedUpdate()
     {
-        if (healthManager.health <= 0) return;
+        if (healthManager.health <= 0 || dialogueUI.IsOpen) return;
         
         // If attack animations are playing, don't move.
         AnimatorStateInfo animState = animator.GetCurrentAnimatorStateInfo(0);
