@@ -826,6 +826,7 @@ GameObject:
   - component: {fileID: 1041625932}
   - component: {fileID: 1041625931}
   - component: {fileID: 1041625933}
+  - component: {fileID: 1041625934}
   m_Layer: 0
   m_Name: Adventurer
   m_TagString: Untagged
@@ -968,7 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58ef81335707e046a0599dba9196664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 5e94bf7eda8f75242a95249e0f9f09a3, type: 2}
+  dialogueObject: {fileID: 11400000, guid: e012627a04c3e2e4e83ce9de6f42ef2f, type: 2}
 --- !u!58 &1041625932
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -997,9 +998,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bccd41c6c34db948b1b0453a7991c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 5e94bf7eda8f75242a95249e0f9f09a3, type: 2}
+  dialogueObject: {fileID: 11400000, guid: e012627a04c3e2e4e83ce9de6f42ef2f, type: 2}
   events:
-  - name: Yes
+  - name: Fight
     onPickedResponse:
       m_PersistentCalls:
         m_Calls:
@@ -1008,13 +1009,35 @@ MonoBehaviour:
           m_MethodName: UpdateDialogueObject
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 9557053d11761c64aa3d462f25beee71, type: 2}
+            m_ObjectArgument: {fileID: 11400000, guid: 955b0a44c90faba48abc5d141a888721, type: 2}
             m_ObjectArgumentAssemblyTypeName: DialogueObject, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Decline
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &1041625934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041625925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bccd41c6c34db948b1b0453a7991c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueObject: {fileID: 11400000, guid: 955b0a44c90faba48abc5d141a888721, type: 2}
+  events:
+  - name: Yes
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls: []
   - name: No
     onPickedResponse:
       m_PersistentCalls:
