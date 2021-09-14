@@ -27,9 +27,11 @@ public class LevelManager : MonoBehaviour
 
     void Win()
     {
-        resultText.GetComponent<Text>().text = winString;
-        mainScreenButton.SetActive(true);
+        // resultText.GetComponent<Text>().text = winString;
+        // mainScreenButton.SetActive(true);
+        resultText.GetComponent<Text>().text = "Victory!";
         GameOver();
+        StartCoroutine("LoadNextLevel");
     }
 
     void Lose()
@@ -45,5 +47,11 @@ public class LevelManager : MonoBehaviour
         isGameEnd = true;
         resultText.SetActive(true);
         if (enemy) enemy.GetComponent<BossAI>().enabled = false;
+    }
+
+    private IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSeconds(2.5f);
+        LevelLoader.Instance.LoadLevel("Country");
     }
 }

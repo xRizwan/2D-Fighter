@@ -1059,6 +1059,10 @@ PrefabInstance:
       propertyPath: enemyLayers.m_Bits
       value: 768
       objectReference: {fileID: 0}
+    - target: {fileID: 3273247103798177034, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3273247103798177035, guid: 788d8c2de42f21c4cb296a0ca092c77e, type: 3}
       propertyPath: m_RootOrder
       value: 2

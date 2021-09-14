@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossFight.unity
     guid: 017b5d144f90d844b8823e7c9bfe799d
+  - enabled: 1
+    path: Assets/Scenes/Country.unity
+    guid: e71b805fed15ac9409340c630e49fac7
+  - enabled: 1
+    path: Assets/Scenes/AdventurerFight.unity
+    guid: 3a1887e378528654d98db3fe5b94d64b
   m_configObjects: {}

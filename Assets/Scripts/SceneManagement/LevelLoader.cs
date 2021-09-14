@@ -7,6 +7,12 @@ public class LevelLoader : MonoBehaviour
 {
     public GameObject loadingScreen;
     public Slider slider;
+    public static LevelLoader Instance;
+
+    void Start()
+    {
+        Instance = this;
+    }
 
     public void LoadLevel(string name)
     {
