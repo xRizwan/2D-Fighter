@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueActivator : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogueObject dialogueObject;
+    [SerializeField] private DialogueInformation dialogueInformation;
     
     public void UpdateDialogueObject(DialogueObject dialogueObject)
     {
@@ -41,6 +42,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
             }
         }
 
+        Debug.Log(dialogueInformation.name);
         player.DialogueUI.ShowDialogue(dialogueObject);
     }
 }

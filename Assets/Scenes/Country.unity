@@ -970,6 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: e012627a04c3e2e4e83ce9de6f42ef2f, type: 2}
+  dialogueInformation: {fileID: 11400000, guid: c783305525167164caca6da78d1d5b3e, type: 2}
 --- !u!58 &1041625932
 CircleCollider2D:
   m_ObjectHideFlags: 0
