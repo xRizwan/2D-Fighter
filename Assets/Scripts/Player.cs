@@ -41,7 +41,7 @@ public class Player : CharacterHandler
 
     void Update()
     {
-        if (healthManager.health <= 0 || dialogueUI.IsOpen) return;
+        if (healthManager.health <= 0 || CheckDialogueOpen()) return;
 
         if (Input.GetKeyDown(attackKey))
             should_attack = true;
@@ -59,7 +59,7 @@ public class Player : CharacterHandler
 
     void FixedUpdate()
     {
-        if (healthManager.health <= 0 || dialogueUI.IsOpen) return;
+        if (healthManager.health <= 0 || CheckDialogueOpen()) return;
         
         // If attack animations are playing, don't move.
         AnimatorStateInfo animState = animator.GetCurrentAnimatorStateInfo(0);
@@ -72,6 +72,19 @@ public class Player : CharacterHandler
         } else {
             Stop();
         }
+    }
+
+    public bool CheckDialogueOpen()
+    {
+        if (dialogueUI && dialogueUI.IsOpen) {
+            Stop(); return true;
+        } else return false;
+    }
+
+    public override void Stop()
+    {
+        animator.SetFloat(SPEED, 0);
+        base.Stop();
     }
 
     public override void Move(float horizontal)
