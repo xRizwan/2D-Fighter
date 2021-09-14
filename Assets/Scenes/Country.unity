@@ -825,6 +825,7 @@ GameObject:
   - component: {fileID: 1041625930}
   - component: {fileID: 1041625932}
   - component: {fileID: 1041625931}
+  - component: {fileID: 1041625933}
   m_Layer: 0
   m_Name: Adventurer
   m_TagString: Untagged
@@ -984,6 +985,28 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!114 &1041625933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041625925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bccd41c6c34db948b1b0453a7991c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueObject: {fileID: 11400000, guid: 5e94bf7eda8f75242a95249e0f9f09a3, type: 2}
+  events:
+  - name: Yes
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: No
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1107879181
 GameObject:
   m_ObjectHideFlags: 0
