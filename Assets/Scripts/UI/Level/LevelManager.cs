@@ -47,12 +47,18 @@ public class LevelManager : MonoBehaviour
     {
         isGameEnd = true;
         resultText.SetActive(true);
-        if (enemy) enemy.GetComponent<BossAI>().enabled = false;
+        if (enemy) {
+            if (enemy.GetComponent<BossAI>())
+                enemy.GetComponent<BossAI>().enabled = false;
+            if (enemy.GetComponent<HumanAI>())
+                enemy.GetComponent<HumanAI>().enabled = false;
+        }
     }
 
     private IEnumerator LoadNextLevel()
     {
         yield return new WaitForSeconds(2.5f);
         LevelLoader.Instance.LoadLevel("Country");
+        if (StoryManager.Instance != null) StoryManager.Instance.hasDefeatedStorm = true;
     }
 }
