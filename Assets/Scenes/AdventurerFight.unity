@@ -1966,6 +1966,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1180428660}
+    - target: {fileID: 485175162, guid: 814d6ee938f1b854b844b206d4dd617f, type: 3}
+      propertyPath: attack_delay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1256592750, guid: 814d6ee938f1b854b844b206d4dd617f, type: 3}
       propertyPath: healthBar
       value: 

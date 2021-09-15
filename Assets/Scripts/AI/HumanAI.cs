@@ -14,9 +14,9 @@ public class HumanAI : BossAI
     void Start()
     {
         StartGame();
-        level_started = false;
-        should_attack = false;
-        should_cast = true;
+        level_started = true;
+
+        StartCoroutine("StartStage");
     }
 
     void Update()
@@ -81,11 +81,20 @@ public class HumanAI : BossAI
             currentChain = 0;
             ResetState();
             can_attack = true;
+            Invoke("ChanceToGoToNextMove", 0.5f);
         }
         else {
             currentChain += 1;
             can_attack = true;
         };
+    }
+
+    void ChanceToGoToNextMove()
+    {
+        int random = Random.Range(0, 5);
+        if (random >= 3) {
+            should_cast = true;
+        }
     }
 
     protected override void DealDamage()
