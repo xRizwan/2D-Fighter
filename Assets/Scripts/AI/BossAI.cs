@@ -127,7 +127,6 @@ public class BossAI : CharacterHandler
 
     protected override void DealDamage()
     {
-        Debug.Log("Attacking");
         base.DealDamage();
         ResetState();
     }

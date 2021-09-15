@@ -7,6 +7,7 @@ public class WindProjectile : MonoBehaviour
     public float moveSpeed = 10;
     public bool isFacingRight;
     public float destoryAfterSeconds = 5f;
+    public int damageValue = 15;
     private float _timer;
 
     void Start()
@@ -25,5 +26,19 @@ public class WindProjectile : MonoBehaviour
         if (_timer >= destoryAfterSeconds) Destroy(gameObject);
 
         transform.Translate(Vector3.left * (isFacingRight ? -1 : 1) * moveSpeed * Time.deltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<HealthManager>().TakeDamage(damageValue);
+            GetComponent<Animator>().SetTrigger("Hit");
+            Invoke("DestroySelf", 0.2f);
+        }
+    }
+
+    void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }
