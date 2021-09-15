@@ -21,6 +21,8 @@ public class BossAI : CharacterHandler
     // if boss has reached close enough to the player
     protected bool reached_destination;
 
+    public float castDelay = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -131,7 +133,7 @@ public class BossAI : CharacterHandler
     }
 
     // for casting magic spell
-    protected void Cast()
+    protected virtual void Cast()
     {
         if (should_cast) {
             if (IsToRight() && !m_facing_right) Flip();
@@ -139,13 +141,13 @@ public class BossAI : CharacterHandler
 
             animator.SetTrigger("Casting");
             
-            Invoke("InstantiateSpell", 0.1f);
+            Invoke("InstantiateSpell", castDelay);
             ResetState();
         }
     }
 
     // Instantiates a new spell object
-    protected void InstantiateSpell()
+    protected virtual void InstantiateSpell()
     {
         Vector2 prefab_position = player.transform.position;
         prefab_position.y += 2;

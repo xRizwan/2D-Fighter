@@ -6,6 +6,8 @@ public class WindProjectile : MonoBehaviour
 {
     public float moveSpeed = 10;
     public bool isFacingRight;
+    public float destoryAfterSeconds = 5f;
+    private float _timer;
 
     void Start()
     {
@@ -16,9 +18,12 @@ public class WindProjectile : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // destroy after a specified amount of seconds have passed
+        _timer += Time.deltaTime;
+        if (_timer >= destoryAfterSeconds) Destroy(gameObject);
+
         transform.Translate(Vector3.left * (isFacingRight ? -1 : 1) * moveSpeed * Time.deltaTime);
     }
 }

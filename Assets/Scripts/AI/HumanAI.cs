@@ -21,10 +21,16 @@ public class HumanAI : BossAI
 
     void Update()
     {
+
+        if (level_started) return;
+
         NextMoveCountDown();
 
+        if (healthManager.is_dazed || healthManager.is_dead) return;
+
         if (go_to_next_move) {
-            should_attack = true;
+            should_attack = false;
+            should_cast = true;
             go_to_next_move = false;
         }
 
@@ -45,6 +51,13 @@ public class HumanAI : BossAI
         if (!reached_destination && should_attack && !should_cast) {
             FollowPlayer();
         }
+    }
+
+    protected override void InstantiateSpell()
+    {
+        Vector2 prefab_position = transform.position;
+        GameObject cast = Instantiate(castingPrefab, prefab_position, castingPrefab.transform.rotation);
+        cast.GetComponent<WindProjectile>().isFacingRight = m_facing_right;
     }
 
     protected override void InitiateAttack()
