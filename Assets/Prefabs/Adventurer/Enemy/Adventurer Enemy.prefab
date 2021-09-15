@@ -237,7 +237,7 @@ MonoBehaviour:
   castingPrefab: {fileID: 3599874809077126640, guid: b1a058e6f215bb54fb7e9ccfe9e3a2fe, type: 3}
   player: {fileID: 0}
   stop_x_from_player: 2
-  attack_delay: 3
+  attack_delay: 2
   castDelay: 0.3
   attackStates:
   - AttackOne
@@ -264,6 +264,6 @@ MonoBehaviour:
   health: 1000
   is_dead: 0
   is_dazed: 0
-  dazeDuration: 0.5
+  dazeDuration: 0
   immuneDuration: 0
   isImmune: 0

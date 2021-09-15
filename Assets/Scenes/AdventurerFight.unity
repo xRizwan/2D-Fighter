@@ -1971,13 +1971,13 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1256592750, guid: 814d6ee938f1b854b844b206d4dd617f, type: 3}
+      propertyPath: health
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256592750, guid: 814d6ee938f1b854b844b206d4dd617f, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 2137879828}
-    - target: {fileID: 1256592750, guid: 814d6ee938f1b854b844b206d4dd617f, type: 3}
-      propertyPath: dazeDuration
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2011878866136921665, guid: 814d6ee938f1b854b844b206d4dd617f, type: 3}
       propertyPath: m_Name
       value: Adventurer Enemy
