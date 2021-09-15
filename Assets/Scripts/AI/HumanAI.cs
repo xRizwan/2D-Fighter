@@ -15,7 +15,8 @@ public class HumanAI : BossAI
     {
         StartGame();
         level_started = false;
-        should_attack = true;
+        should_attack = false;
+        should_cast = true;
     }
 
     void Update()
@@ -36,6 +37,7 @@ public class HumanAI : BossAI
             }
         }
         if (reached_destination && !isChaining) InitiateAttack();
+        Cast();
     }
 
     void FixedUpdate()
