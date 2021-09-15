@@ -29,9 +29,7 @@ public class HumanAI : BossAI
         if (healthManager.is_dazed || healthManager.is_dead) return;
 
         if (go_to_next_move) {
-            should_attack = false;
-            should_cast = true;
-            go_to_next_move = false;
+            DecideNextMove();
         }
 
         if (isChaining) {
@@ -63,13 +61,15 @@ public class HumanAI : BossAI
     protected override void InitiateAttack()
     {
 
-        if (can_attack && should_attack)
+        if (should_attack)
         {
-            Debug.Log(currentChain + "   :   " + attackStates[currentChain]);
             FacePlayer();
+
             animator.SetTrigger(attackStates[currentChain]);
             m_rb.AddForce(Vector2.right * (m_facing_right ? 1 : -1 ) * pushEffectSpeed, ForceMode2D.Impulse);
-            // Attack(0.4f);
+            
+            float attackAfter = Mathf.Clamp(attackDelays[currentChain] / 2, 0.3f, 2);
+            Attack(attackAfter);
 
             isChaining = true;
             HandleChainAttacks();
@@ -80,8 +80,27 @@ public class HumanAI : BossAI
         if (currentChain >= attackStates.Length - 1) {
             currentChain = 0;
             ResetState();
+            can_attack = true;
         }
-        else currentChain += 1;
+        else {
+            currentChain += 1;
+            can_attack = true;
+        };
+    }
+
+    protected override void DealDamage()
+    {
+        if (!healthManager.is_dazed && can_attack && !healthManager.is_dead)
+        {
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+            foreach(Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<HealthManager>().TakeDamage(damageValue);
+            }
+        }
+
+        can_attack = false;
     }
 
     protected override void ResetState()

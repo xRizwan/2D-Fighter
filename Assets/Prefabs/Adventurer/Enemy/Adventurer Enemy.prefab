@@ -74,7 +74,8 @@ GameObject:
   - component: {fileID: 2011878866136921677}
   - component: {fileID: 2011878866136921678}
   - component: {fileID: 485175162}
-  m_Layer: 0
+  - component: {fileID: 1256592750}
+  m_Layer: 9
   m_Name: Adventurer Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,10 +234,11 @@ MonoBehaviour:
   m_jump_force: 60
   damageValue: 10
   can_attack: 0
-  castingPrefab: {fileID: 0}
+  castingPrefab: {fileID: 3599874809077126640, guid: b1a058e6f215bb54fb7e9ccfe9e3a2fe, type: 3}
   player: {fileID: 0}
   stop_x_from_player: 2
   attack_delay: 3
+  castDelay: 0.3
   attackStates:
   - AttackOne
   - AttackTwo
@@ -246,3 +248,22 @@ MonoBehaviour:
   - 0.7
   - 0
   pushEffectSpeed: 2000
+--- !u!114 &1256592750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011878866136921665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cbc9d51c43fb04bb65dc55cfb9849f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  health: 1000
+  is_dead: 0
+  is_dazed: 0
+  dazeDuration: 0.5
+  immuneDuration: 0
+  isImmune: 0
