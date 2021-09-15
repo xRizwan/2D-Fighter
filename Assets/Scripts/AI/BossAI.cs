@@ -13,13 +13,13 @@ public class BossAI : CharacterHandler
 
     // delay before next move can be decided
     public float attack_delay = 3.0f;
-    private float next_move_time;
-    private bool go_to_next_move;
-    private bool should_cast;
-    private bool level_started;
+    protected float next_move_time;
+    protected bool go_to_next_move;
+    protected bool should_cast;
+    protected bool level_started;
 
     // if boss has reached close enough to the player
-    private bool reached_destination;
+    protected bool reached_destination;
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +75,7 @@ public class BossAI : CharacterHandler
     }
 
     // chooses whether to cast magic or attack player with melee weapon
-    private void DecideNextMove()
+    protected void DecideNextMove()
     {
         int result = Random.Range(0, 3);
 
@@ -86,14 +86,13 @@ public class BossAI : CharacterHandler
     }
 
     // follows player
-    private void FollowPlayer()
+    protected void FollowPlayer()
     {
         bool is_to_right = IsToRight();
         bool is_to_left = IsToLeft();
 
         if (is_to_right) Move(1);
         else if(is_to_left) Move(-1);
-
 
         // check whether player has reached close enough to the player to initiate melee attack.
         bool reached_right = (is_to_right) && (transform.position.x >= player.position.x - stop_x_from_player);
@@ -109,7 +108,7 @@ public class BossAI : CharacterHandler
     }
 
     // attacks player if allowed
-    private void InitiateAttack()
+    protected virtual void InitiateAttack()
     {
         if (can_attack && should_attack)
         {
@@ -127,7 +126,7 @@ public class BossAI : CharacterHandler
     }
 
     // for casting magic spell
-    private void Cast()
+    protected void Cast()
     {
         if (should_cast) {
             if (IsToRight() && !m_facing_right) Flip();
@@ -141,7 +140,7 @@ public class BossAI : CharacterHandler
     }
 
     // Instantiates a new spell object
-    private void InstantiateSpell()
+    protected void InstantiateSpell()
     {
         Vector2 prefab_position = player.transform.position;
         prefab_position.y += 2;
@@ -149,7 +148,7 @@ public class BossAI : CharacterHandler
     }
 
     // resets boss state;
-    private void ResetState(){
+    protected virtual void ResetState(){
         reached_destination = false;
         go_to_next_move = false;
         should_attack = false;
@@ -159,24 +158,24 @@ public class BossAI : CharacterHandler
     }
 
     // Displays the radius of the attack range(circle), when the character is selected in the editor
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    private IEnumerator StartStage()
+    protected IEnumerator StartStage()
     {
         yield return new WaitForSeconds(2);
         level_started = false;
     }
 
-    private bool IsToRight()
+    protected bool IsToRight()
     {
         return player.position.x > transform.position.x;
     }
 
-    private bool IsToLeft()
+    protected bool IsToLeft()
     {
         return player.position.x < transform.position.x;
     }
