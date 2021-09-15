@@ -38,17 +38,12 @@ public class BossAI : CharacterHandler
     {
         if (level_started) return;
 
-        // if we can't go to the next move
-        // countup till we can go to the next move
-        if (!go_to_next_move) {
-            next_move_time += Time.deltaTime;
-            if(next_move_time >= attack_delay) go_to_next_move = true;
-        }
+        NextMoveCountDown();
 
         if (healthManager.is_dazed || healthManager.is_dead) return;
 
         // decide whether to go to perform melee attack or cast magic
-        if (go_to_next_move && !should_attack && !should_cast && !can_attack) DecideNextMove();
+        DecideNextMove();
         
         // casting and attacking
         InitiateAttack();
@@ -74,15 +69,25 @@ public class BossAI : CharacterHandler
         base.Stop();
     }
 
+    protected void NextMoveCountDown()
+    {
+        // if we can't go to the next move
+        // countup till we can go to the next move
+        if (!go_to_next_move) {
+            next_move_time += Time.deltaTime;
+            if(next_move_time >= attack_delay) go_to_next_move = true;
+        }
+    }
+
     // chooses whether to cast magic or attack player with melee weapon
     protected void DecideNextMove()
     {
-        int result = Random.Range(0, 3);
+        if (go_to_next_move && !should_attack && !should_cast && !can_attack) {
+            int result = Random.Range(0, 3);
 
-        if (result == 2) should_cast = true;
-        else should_attack = true;
-
-        Debug.Log("Here");
+            if (result == 2) should_cast = true;
+            else should_attack = true;
+        }
     }
 
     // follows player

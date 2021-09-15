@@ -18,7 +18,7 @@ MonoBehaviour:
   - What do you say we entertain each other with a little duel. so i can personally
     see how much you've improved.
   responses:
-  - responseText: Fight
+  - responseText: Accept
     dialogueObject: {fileID: 11400000, guid: 2f6b846abc9924d4c994aac655e6cc99, type: 2}
   - responseText: Decline
     dialogueObject: {fileID: 11400000, guid: 981068b48766ede4d9b6c0e9d7453460, type: 2}

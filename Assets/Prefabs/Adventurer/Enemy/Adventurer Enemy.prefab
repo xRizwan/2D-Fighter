@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 2011878866136921676}
   - component: {fileID: 2011878866136921677}
   - component: {fileID: 2011878866136921678}
+  - component: {fileID: 485175162}
   m_Layer: 0
   m_Name: Adventurer Enemy
   m_TagString: Untagged
@@ -203,3 +204,45 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0068969727, y: -0.24140882}
   m_Size: {x: 1.0193863, y: 1.6539497}
   m_Direction: 0
+--- !u!114 &485175162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011878866136921665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb2733995915c4a918d80666be0948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovementSmoothing: 0
+  m_speed: 14
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  attackPoint: {fileID: 2011878865704094722}
+  ground_layer:
+    serializedVersion: 2
+    m_Bits: 64
+  ground_check: {fileID: 2011878866108693142}
+  animator: {fileID: 2011878866136921676}
+  should_attack: 0
+  attackRange: 1
+  m_facing_right: 0
+  m_jump_force: 60
+  damageValue: 10
+  can_attack: 0
+  castingPrefab: {fileID: 0}
+  player: {fileID: 0}
+  stop_x_from_player: 2
+  attack_delay: 3
+  attackStates:
+  - AttackOne
+  - AttackTwo
+  - AttackThree
+  attackDelays:
+  - 1
+  - 0.7
+  - 0
+  pushEffectSpeed: 2000

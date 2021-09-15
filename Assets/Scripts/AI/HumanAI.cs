@@ -20,6 +20,13 @@ public class HumanAI : BossAI
 
     void Update()
     {
+        NextMoveCountDown();
+
+        if (go_to_next_move) {
+            should_attack = true;
+            go_to_next_move = false;
+        }
+
         if (isChaining) {
             timeCount += Time.deltaTime;
 
