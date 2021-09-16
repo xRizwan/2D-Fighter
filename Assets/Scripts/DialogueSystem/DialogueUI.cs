@@ -49,9 +49,10 @@ public class DialogueUI : MonoBehaviour
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
         }
 
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
 
         if (dialogueObject.HasResponses) {
+            yield return null;
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
             textLabel.text = string.Empty;
             responseHandler.ShowResponses(dialogueObject.Responses);
         } else {
