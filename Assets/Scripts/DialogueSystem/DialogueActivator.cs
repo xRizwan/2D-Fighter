@@ -41,8 +41,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
                 break;
             }
         }
-
-        Debug.Log(dialogueInformation.name);
+        
         player.DialogueUI.ShowDialogue(dialogueObject);
         player.DialogueUI.OpenNameBox(dialogueInformation);
     }
