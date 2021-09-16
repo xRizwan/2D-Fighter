@@ -57,8 +57,8 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator LoadNextLevel()
     {
+        if (StoryManager.Instance != null) StoryManager.Instance.hasDefeatedStorm = true;
         yield return new WaitForSeconds(2.5f);
         LevelLoader.Instance.LoadLevel("Country");
-        if (StoryManager.Instance != null) StoryManager.Instance.hasDefeatedStorm = true;
     }
 }

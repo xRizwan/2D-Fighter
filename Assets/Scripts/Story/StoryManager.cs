@@ -10,10 +10,12 @@ public class StoryManager : MonoBehaviour
     void Start()
     {
         if (Instance != null)
-            Destroy(Instance);
-        else {
-            Instance = this;
-            DontDestroyOnLoad(Instance);
+        {
+            Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 }
