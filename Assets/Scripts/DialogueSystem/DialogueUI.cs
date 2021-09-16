@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private GameObject nameBox;
 
     public bool IsOpen {get; private set;}
     private ResponseHandler responseHandler;
@@ -78,5 +80,13 @@ public class DialogueUI : MonoBehaviour
         IsOpen = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
+    }
+
+    public void OpenNameBox(DialogueInformation dialogueInformation)
+    {
+        if (dialogueInformation != null) {
+            nameBox.GetComponentInChildren<Text>().text = dialogueInformation.CharacterName;
+            nameBox.SetActive(true);
+        } else nameBox.SetActive(false);
     }
 }
