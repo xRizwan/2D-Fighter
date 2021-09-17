@@ -51,7 +51,7 @@ public class Player : CharacterHandler
         horizontal = Input.GetAxis("Horizontal" + playerNumber);
         vertical = Input.GetAxis("Vertical" + playerNumber);
     
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Interactable?.Interact(this);
         }
