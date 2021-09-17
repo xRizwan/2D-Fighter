@@ -6,6 +6,8 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogueObject dialogueObject;
     [SerializeField] private DialogueInformation dialogueInformation;
+    [SerializeField] private GameObject exPrefab;
+    private GameObject instantiated;
     
     public void UpdateDialogueObject(DialogueObject dialogueObject)
     {
@@ -17,6 +19,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         if (other.CompareTag("Player") && other.TryGetComponent(out Player player))
         {
             player.Interactable = this;
+            instantiated = Instantiate(exPrefab, exPrefab.transform.position, exPrefab.transform.rotation);
         }
     }
     
@@ -27,6 +30,11 @@ public class DialogueActivator : MonoBehaviour, IInteractable
             if (player.Interactable is DialogueActivator dialogueActivator && dialogueActivator == this)
             {
                 player.Interactable = null;
+            }
+
+            if (instantiated != null) {
+                Destroy(instantiated);
+                instantiated = null;
             }
         }
     }
