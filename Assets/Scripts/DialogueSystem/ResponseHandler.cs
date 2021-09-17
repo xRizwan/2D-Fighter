@@ -11,9 +11,9 @@ public class ResponseHandler : MonoBehaviour
     [SerializeField] private RectTransform responseContainer;
     private DialogueUI dialogueUI;
     private ResponseEvent[] responseEvents;
-    private int chosenButton;
-    private bool isDisplayingResponses;
     private Coroutine chosingCoroutine;
+    private bool isDisplayingResponses;
+    private int chosenButton;
 
     private void Start()
     {
@@ -61,18 +61,13 @@ public class ResponseHandler : MonoBehaviour
     {
 
         while (isDisplayingResponses) {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                chosenButton++;
-                HandleSelect();
-            }
+            HandleChoice();
 
             yield return null;
             if (Input.GetKeyDown(KeyCode.Space)) break;
         }
 
         OnPickedResponse(responses[chosenButton], chosenButton);
-
     }
 
     public void OnPickedResponse(Response response, int responseIndex)
@@ -80,8 +75,6 @@ public class ResponseHandler : MonoBehaviour
         if (chosingCoroutine != null) StopCoroutine(chosingCoroutine);
         isDisplayingResponses = false;
         responseBox.gameObject.SetActive(false);
-
-        Debug.Log("here 3 " + "   " + response + "  :  " + responseEvents.Length + "   :  " + responseIndex);
 
         foreach (GameObject button in tempResponseButtons)
         {
@@ -106,7 +99,7 @@ public class ResponseHandler : MonoBehaviour
     }
     void SetSelectedColor(TMP_Text text)
     {
-        text.color = Color.blue;
+        text.color = new Color(5, 5, 6, 100);
     }
 
     void SetDisabledColor(TMP_Text text)
@@ -118,9 +111,36 @@ public class ResponseHandler : MonoBehaviour
     {
         for(int i = 0; i < tempResponseButtons.Count; i++)
         {
-            if (i == chosenButton) tempResponseButtons[i].GetComponent<TMP_Text>().color = Color.blue;
-            else tempResponseButtons[i].GetComponent<TMP_Text>().color = Color.black;           
+            if (i == chosenButton) SetSelectedColor(tempResponseButtons[i].GetComponent<TMP_Text>());
+            else SetDisabledColor(tempResponseButtons[i].GetComponent<TMP_Text>());
+        }
+    }
+
+    void HandleChoice()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            chosenButton--;
+            HandleChoiceRestraints();
+            HandleSelect();
+        }
+
+        if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            chosenButton++;
+            HandleChoiceRestraints();
+            HandleSelect();
+        }
+    }
+
+    void HandleChoiceRestraints()
+    {
+        if (chosenButton > tempResponseButtons.Count - 1)
+        {
+            chosenButton = 0;
+        } else if (chosenButton < 0)
+        {
+            chosenButton = tempResponseButtons.Count - 1;
         }
     }
 }
-
