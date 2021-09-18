@@ -12,3 +12,5 @@ Heart (Sprite) - Brackeys ----- []
 
 Music - Timbeek - https://timbeek.itch.io/royalty-free-music-pack ----- []
 Tiles - @Maytch (twitter) ----- []
+
+ExclamationMark (Sprite) - PixelBuddha
